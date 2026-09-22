@@ -1,0 +1,6 @@
+{
+  "name": "PhishGuard Nexus",
+  "description": "AI-Powered Offer Letter, Rental Scam & Phishing Inspector featuring real-time AI Voice Copilot with talk-back, dark triad threat scoring, counter-response generator, and identity theft protection suite.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
