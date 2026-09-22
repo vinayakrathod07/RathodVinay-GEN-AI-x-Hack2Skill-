@@ -119,6 +119,37 @@
       .qr-reticle-glow {
         animation: pulseGlow 2.5s ease-in-out infinite;
       }
+      /* Modal & Overlay Smooth Scale-up Animation */
+      @keyframes scaleUp {
+        from {
+          opacity: 0;
+          transform: scale(0.96) translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .animate-scale-up {
+        animation: scaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      /* Micro-interactions & Smooth Transitions */
+      .interactive-card {
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+      }
+      .interactive-card:hover {
+        transform: translateY(-2px);
+      }
+      /* Modern Focus Rings */
+      input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: #6366f1 !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+      }
+      .dark input:focus, .dark textarea:focus, .dark select:focus {
+        border-color: #06b6d4 !important;
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2) !important;
+      }
       /* Clean print styles for PDF reports */
       @media print {
         body {
@@ -147,49 +178,49 @@
   <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white antialiased transition-colors duration-200">
 
     <!-- Top Navigation & Security Header -->
-    <header id="nav-header" class="sticky top-0 z-40 bg-white/95 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200/90 dark:border-slate-800/80 px-4 lg:px-8 py-2.5 transition-colors no-print">
+    <header id="nav-header" class="sticky top-0 z-40 bg-white/90 dark:bg-slate-950/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800/80 px-4 lg:px-8 py-3 transition-colors no-print">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <!-- Logo & Trust Badges -->
-        <div class="flex items-center space-x-3 flex-shrink-0">
-          <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-cyan-500/20 border border-indigo-200 dark:border-cyan-500/40 flex items-center justify-center text-indigo-600 dark:text-cyan-400 shadow-xs">
+        <div class="flex items-center space-x-3.5 flex-shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/10 to-indigo-500/20 dark:from-cyan-500/20 dark:to-blue-600/20 border border-indigo-200/80 dark:border-cyan-500/30 flex items-center justify-center text-indigo-600 dark:text-cyan-400 shadow-xs transition-transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <a href="#" class="font-bold text-lg tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 hover:opacity-90 transition-opacity">
-                PhishGuard <span class="text-indigo-600 dark:text-cyan-400 font-mono text-xs tracking-wider uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-cyan-950/70 border border-indigo-200 dark:border-cyan-500/30">Nexus</span>
+              <a href="#" class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 hover:opacity-90 transition-opacity">
+                PhishGuard <span class="text-indigo-600 dark:text-cyan-400 font-mono text-[11px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-cyan-950/80 border border-indigo-200/70 dark:border-cyan-500/30">Nexus</span>
               </a>
-              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200/80 dark:border-emerald-500/30">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Active Shield</span>
               </span>
             </div>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">Recruitment Fraud, Email &amp; Physical Flyer Inspector</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">AI Fraud Forensic &amp; Real-Time Threat Verification</p>
           </div>
         </div>
 
         <!-- Center Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-300">
-          <button onclick="scrollToSection('ingestion-workspace')" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
+        <nav class="hidden lg:flex items-center space-x-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300">
+          <button onclick="scrollToSection('ingestion-workspace')" class="px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer flex items-center gap-1.5 active:scale-95">
             <svg class="w-3.5 h-3.5 text-indigo-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             <span>Inspector</span>
           </button>
-          <button onclick="openFlyerQrModal()" class="px-3 py-1.5 rounded-lg bg-indigo-50/80 hover:bg-indigo-100 dark:bg-cyan-950/50 dark:hover:bg-cyan-900/60 border border-indigo-200 dark:border-cyan-500/40 text-indigo-700 dark:text-cyan-300 transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs">
+          <button onclick="openFlyerQrModal()" class="px-3 py-1.5 rounded-xl bg-indigo-50/90 hover:bg-indigo-100 dark:bg-cyan-950/60 dark:hover:bg-cyan-900/70 border border-indigo-200/80 dark:border-cyan-500/40 text-indigo-700 dark:text-cyan-300 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs active:scale-95">
             <svg class="w-3.5 h-3.5 text-indigo-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <span>Scan Flyer QR</span>
           </button>
-          <button onclick="toggleGuideModal(true)" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
+          <button onclick="toggleGuideModal(true)" class="px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer flex items-center gap-1.5 active:scale-95">
             <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
             <span>Scam Guide</span>
           </button>
-          <button onclick="toggleHistoryDrawer()" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
+          <button onclick="toggleHistoryDrawer()" class="px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer flex items-center gap-1.5 active:scale-95">
             <svg class="w-3.5 h-3.5 text-indigo-500 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <span>Audit History</span>
-            <span id="nav-ledger-badge" class="px-1.5 py-0.2 rounded-full bg-slate-200 dark:bg-slate-800 text-[10px] font-mono">0</span>
+            <span id="nav-ledger-badge" class="px-1.5 py-0.2 rounded-full bg-slate-200 dark:bg-slate-800 text-[10px] font-mono font-bold">0</span>
           </button>
-          <button onclick="toggleEmergencyModal(true)" class="px-3 py-1.5 rounded-lg text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer flex items-center gap-1.5">
+          <button onclick="toggleEmergencyModal(true)" class="px-3 py-1.5 rounded-xl text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-all cursor-pointer flex items-center gap-1.5 active:scale-95">
             <span class="w-2 h-2 rounded-full bg-rose-500"></span>
             <span>Emergency Aid</span>
           </button>
@@ -200,7 +231,7 @@
           <!-- Primary Quick Scan Flyer Button -->
           <button
             onclick="openFlyerQrModal()"
-            class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-slate-950 font-bold text-xs shadow-sm hover:shadow-cyan-500/20 transition-all cursor-pointer transform active:scale-95"
+            class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-slate-950 font-bold text-xs shadow-xs hover:shadow-cyan-500/25 transition-all cursor-pointer transform active:scale-95"
             title="Scan physical recruitment flyer or poster QR code with camera"
           >
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -211,20 +242,20 @@
           <button
             id="btn-header-copilot"
             onclick="toggleAssistantDrawer(true)"
-            class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-indigo-50 hover:bg-indigo-100 dark:bg-cyan-950/70 dark:hover:bg-cyan-900/80 border border-indigo-300 dark:border-cyan-700/80 text-indigo-700 dark:text-cyan-300 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+            class="px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-50/90 hover:bg-indigo-100 dark:bg-slate-900 dark:hover:bg-slate-800 border border-indigo-200/80 dark:border-slate-700 text-indigo-700 dark:text-cyan-300 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer active:scale-95"
             title="Open AI Security Assistant with Voice Talk Back"
           >
             <span class="relative flex h-2 w-2">
               <span id="voice-ping-dot" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 dark:bg-cyan-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600 dark:bg-cyan-400"></span>
             </span>
-            <span class="hidden md:inline">Voice Copilot</span>
-            <span id="header-lang-pill" class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-cyan-900/60 text-indigo-700 dark:text-cyan-300 border border-indigo-200 dark:border-cyan-700/60">🇺🇸 EN</span>
+            <span class="hidden md:inline font-bold">Voice Copilot</span>
+            <span id="header-lang-pill" class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-indigo-100 dark:bg-cyan-950 text-indigo-700 dark:text-cyan-300 border border-indigo-200/80 dark:border-cyan-800">🇺🇸 EN</span>
             <svg class="w-3.5 h-3.5 text-indigo-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
           </button>
 
           <!-- Gemini Key Modal Trigger -->
-          <button id="btn-api-key" onclick="toggleApiKeyModal(true)" class="p-1.5 text-xs font-medium rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 transition-all flex items-center gap-1 cursor-pointer" title="Manage Gemini API Key">
+          <button id="btn-api-key" onclick="toggleApiKeyModal(true)" class="p-2 text-xs font-medium rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 transition-all flex items-center gap-1 cursor-pointer active:scale-95" title="Manage Gemini API Key">
             <span id="api-key-indicator" class="w-2 h-2 rounded-full bg-amber-400"></span>
             <svg class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
           </button>
@@ -233,7 +264,7 @@
           <button
             id="btn-theme-toggle"
             onclick="toggleTheme()"
-            class="p-1.5 text-xs font-medium rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 transition-all flex items-center justify-center cursor-pointer"
+            class="p-2 text-xs font-medium rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 transition-all flex items-center justify-center cursor-pointer active:scale-95"
             title="Toggle Light / Dark Mode"
             aria-label="Toggle Theme"
           >
@@ -249,7 +280,7 @@
           <button
             id="btn-mobile-menu"
             onclick="toggleMobileMenu()"
-            class="lg:hidden p-1.5 text-xs font-medium rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 transition-all cursor-pointer"
+            class="lg:hidden p-2 text-xs font-medium rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 transition-all cursor-pointer active:scale-95"
             aria-label="Open Navigation Menu"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
@@ -396,15 +427,15 @@
              LEFT PANE: Multi-Vector Ingestion Workspace
              ============================================== -->
         <section id="ingestion-workspace" class="lg:col-span-5 flex flex-col space-y-4">
-          <div class="bg-white dark:bg-white/10 dark:backdrop-blur-md border border-slate-200 dark:border-white/20 rounded-2xl p-5 shadow-sm dark:shadow-2xl space-y-4 transition-all">
+          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800/90 rounded-2xl p-5 sm:p-6 shadow-sm dark:shadow-xl space-y-4 transition-all">
             
             <!-- Ingestion Header & Clear Button -->
-            <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-3">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800/80 pb-3">
               <div class="flex items-center space-x-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-cyan-400"></span>
                 <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Inspect Your Offer</h2>
               </div>
-              <button id="btn-clear-inputs" onclick="clearWorkspace()" class="text-xs text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 flex items-center gap-1 transition-colors cursor-pointer">
+              <button id="btn-clear-inputs" onclick="clearWorkspace()" class="text-xs text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 flex items-center gap-1 transition-colors cursor-pointer active:scale-95">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                 Clear
               </button>
@@ -439,7 +470,7 @@
             </div>
 
             <!-- API Key Vault (SessionStorage with Password Mask) -->
-            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-white/10 space-y-1.5">
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80 space-y-1.5">
               <div class="flex items-center justify-between">
                 <label for="vault-api-key" class="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
                   <svg class="w-3.5 h-3.5 text-indigo-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
@@ -989,7 +1020,7 @@
             <button
               id="btn-run-inspection"
               onclick="analyzeDocument()"
-              class="w-full py-3.5 px-4 rounded-xl font-bold text-sm tracking-wide bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-gradient-to-r dark:from-cyan-500 dark:to-blue-600 dark:text-slate-950 shadow-md shadow-indigo-500/20 dark:shadow-cyan-500/20 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              class="w-full py-3.5 px-4 rounded-xl font-bold text-sm tracking-wide bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-slate-950 shadow-md shadow-indigo-600/20 dark:shadow-cyan-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               <svg id="btn-icon-shield" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -1175,7 +1206,7 @@
                   </div>
 
                   <!-- 1. Financial Trap Risk -->
-                  <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-white/10">
+                  <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80">
                     <div class="flex items-center justify-between text-xs">
                       <span class="text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-rose-500"></span>
@@ -1194,12 +1225,12 @@
                   </div>
 
                   <!-- 2. Domain Spoof Risk -->
-                  <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-white/10">
+                  <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80">
                     <div class="flex items-center justify-between text-xs">
                       <span class="text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                         🌐 Domain Spoof Risk
-                        <span class="text-[10px] text-slate-500 font-normal hidden sm:inline">(Typosquatting, <30d WHOIS, webmail)</span>
+                        <span class="text-[10px] text-slate-500 font-normal hidden sm:inline">(Typosquatting, &lt;30d WHOIS, webmail)</span>
                       </span>
                       <div class="flex items-center gap-2">
                         <span id="badge-domain-spoof" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30 font-semibold">LOW</span>
@@ -1212,7 +1243,7 @@
                   </div>
 
                   <!-- 3. Psychological Coercion -->
-                  <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-white/10">
+                  <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80">
                     <div class="flex items-center justify-between text-xs">
                       <span class="text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-purple-500"></span>
@@ -1370,8 +1401,8 @@
       </div>
 
       <!-- Local Storage History Bottom Pane (Last 3 Scans) -->
-      <section id="bottom-history-pane" class="mt-8 bg-white dark:bg-white/10 dark:backdrop-blur-md rounded-2xl border border-slate-200 dark:border-white/20 p-5 shadow-sm dark:shadow-2xl transition-all space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-3">
+      <section id="bottom-history-pane" class="mt-8 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/90 dark:border-slate-800/90 p-5 shadow-sm dark:shadow-xl transition-all space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800/80 pb-3">
           <div class="flex items-center space-x-2.5">
             <div class="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-cyan-500/10 border border-indigo-200 dark:border-cyan-500/30 flex items-center justify-center text-indigo-600 dark:text-cyan-400">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -4045,7 +4076,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA (NO MARKDOWN TEXT OUTSIDE 
 
         if (last3.length === 0) {
           container.innerHTML = `
-            <div class="col-span-full py-8 text-center text-xs text-slate-500 dark:text-slate-400 border border-dashed border-slate-300 dark:border-white/10 rounded-xl bg-slate-50/50 dark:bg-white/5">
+            <div class="col-span-full py-8 text-center text-xs text-slate-500 dark:text-slate-400 border border-dashed border-slate-300 dark:border-slate-800 rounded-xl bg-slate-50/50 dark:bg-slate-950/40">
               <svg class="w-6 h-6 mx-auto mb-1.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <span class="font-medium text-slate-700 dark:text-slate-300">No previous forensic audits stored in local storage yet.</span>
               <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-1">Run an inspection or click a quick demo button above to log your audits here.</p>
@@ -4066,7 +4097,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA (NO MARKDOWN TEXT OUTSIDE 
           else if (isHigh) badgeClass = 'bg-orange-100 dark:bg-orange-500/20 text-orange-800 dark:text-orange-300 border-orange-300 dark:border-orange-500/40';
           else if (isMod) badgeClass = 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-500/40';
 
-          card.className = 'p-4 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-indigo-400 dark:hover:border-cyan-400/50 transition-all text-xs flex flex-col justify-between shadow-xs space-y-3';
+          card.className = 'p-4 rounded-xl bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80 hover:border-indigo-400 dark:hover:border-cyan-500/50 transition-all text-xs flex flex-col justify-between shadow-xs space-y-3';
           card.innerHTML = `
             <div class="space-y-1.5">
               <div class="flex items-center justify-between gap-2">
@@ -4081,7 +4112,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA (NO MARKDOWN TEXT OUTSIDE 
                 ${escapeHtml(item.verdict || 'Audit telemetry record logged in browser storage.')}
               </p>
             </div>
-            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-white/5 text-[10px] text-slate-400 dark:text-slate-500">
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[10px] text-slate-400 dark:text-slate-500">
               <span class="font-mono">${escapeHtml(item.date)}</span>
               <button
                 onclick="reInspectHistory('${item.id}')"
